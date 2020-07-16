@@ -5,15 +5,16 @@ const entryLog = document.querySelector(".entries")
 
 export const JournalList = () => {
     const entries = useJournalEntries()
+    console.log(entries)
 
     let entryHTMLRepresentations = ""
     for (const entry of entries) {
         entryHTMLRepresentations += JournalEntryComponent(entry)
-
+    }
 
         entryLog.innerHTML += 
         `<article class="entries">
             ${entryHTMLRepresentations}
         </article>`
-    }
+    
 }
