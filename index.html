@@ -10,40 +10,45 @@
     <header class="header">
         <img class="logo" href="" alt="logo" />
         <section class="header__title">
-            <h1></h1>
+            <h1>Life on the Daily</h1>
         </section>
     </header>
     <main>
-        <h2>Life on the Daily</h2>
-        <form action="">
-            <fieldset>
-                <label for="journalDate">Date of entry</label>
-                <input type="date" name="journalDate" id="journalDate">
-            </fieldset>
-            <fieldset>
-                <label for="journalTitle">Title of entry</label>
-                <input type="text" name="journalTitle" id="journalTitle">
-            </fieldset>
-            <fieldset>
-                <label for="journalEntry">Journal Entry</label>
-                <input type="text" name="journalEntry" id="journalEntry">
-                <label for="journalDate">Date of entry</label>
-            </fieldset>
-            <fieldset>
-                <select name="journalMood" id="journalMood">
-                    <option value="Happy">Happy</option>
-                    <option value="Sad">Sad</option>
-                    <option value="Angry">Angry</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <input type="submit" value="Submit">
-            </fieldset>
-        </form>
+        <article class="entry__form">
+            <h2>New Journal Entry!</h2>
+            <form action="">
+                <fieldset>
+                    <label for="journalDate">Date of entry</label>
+                    <input type="date" name="journalDate" id="newJournalDate">
+                </fieldset>
+                <fieldset>
+                    <label for="journalTitle">Title of entry</label>
+                    <input type="text" name="journalTitle" id="newJournalTitle">
+                </fieldset>
+                <fieldset>
+                    <label for="journalEntry">Journal Entry</label>
+                    <input type="text" name="journalEntry" id="newJournalEntry">
+                    <label for="journalDate">Date of entry</label>
+                </fieldset>
+                <fieldset>
+                    <select name="journalMood" id="newJournalMood">
+                        <option value="Happy">Happy</option>
+                        <option value="Sad">Sad</option>
+                        <option value="Angry">Angry</option>
+                    </select>
+                </fieldset>
+                <input type="submit" value="Submit" class="button__submit">
+            </form>
+        </article>
+        <article class="entries">
 
+        </article>
     </main>
     <footer>
 
     </footer>
+
+    <script type="module" src="./scripts/main.js"></script>
+
 </body>
 </html>
