@@ -1,0 +1,25 @@
+.entryForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+#newJournalDate {
+    width: 20%;
+}
+
+#newJournalTitle {
+    width: 40%;
+}
+
+#newJournalEntry {
+    width: 60%;
+}
+
+#newJournalMood {
+    width: 20%;
+}
+
+#saveEntry {
+    width: 15%;
+}

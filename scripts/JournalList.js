@@ -1,20 +1,26 @@
-import {useJournalEntries} from "./JournalDataProvider.js"
+import {useJournalEntries, getEntries} from "./JournalDataProvider.js"
 import {JournalEntryComponent} from "./JournalEntry.js"
 
 const entryLog = document.querySelector(".entries")
+const eventHub = document.querySelector(".container")
+
 
 export const JournalList = () => {
-    const entries = useJournalEntries()
-    console.log(entries)
 
-    let entryHTMLRepresentations = ""
-    for (const entry of entries) {
-        entryHTMLRepresentations += JournalEntryComponent(entry)
-    }
+    getEntries()
+    .then(() => {
+        const allEntries = useJournalEntries()
+        render(allEntries)
+    })
+}
 
-        entryLog.innerHTML += 
-        `<article class="entries">
-            ${entryHTMLRepresentations}
-        </article>`
-    
+const render = (entryArray) => {
+
+    const entriesConvertedToStrings = entryArray.map(
+        (currentEntry) => {
+            return JournalEntryComponent(currentEntry)
+        }
+    ).join("")
+
+    entryLog.innerHTML = entriesConvertedToStrings
 }

@@ -1,31 +1,41 @@
-const journal = [
-    {
-        id: 1,
-        date: "07/24/2025",
-        concept: "HTML & CSS",
-        entry: "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-        mood: "Ok"
-    },
-    {
-        id: 2,
-        date: "07/26/2025",
-        concept: "Complex Flexbox",
-        entry: "I tried to have an element in my Flexbox layout also be another Flexbox layout. It hurt my brain. I hate Steve.",
-        mood: "Sad"
-    },
-    {
-        id: 3,
-        date: "07/26/2025",
-        concept: "Complex Flexbox",
-        entry: "I tried to have an element in my Flexbox layout also be another Flexbox layout. It hurt my brain. I hate Steve.",
-        mood: "Sad"
-    }
-]
+let entries = []
+
+const eventHub = document.querySelector(".container")
+
+const dispatchStateChangeEvent = () => {
+    const noteStateChangedEvent = new CustomEvent("noteStateChanged")
+
+    eventHub.dispatchEvent(noteStateChangedEvent)
+}
 
 export const useJournalEntries = () => {
-    const sortedByDate = journal.sort(
+    const sortedByDate = entries.sort(
         (currentEntry, nextEntry) =>
             Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
     )
     return sortedByDate
+}
+
+export const getEntries = () => {
+    return fetch("http://localhost:3000/entries")
+        .then(response => response.json())
+        .then(parsedEntries => {
+            entries = parsedEntries
+        })
+
+}
+
+export const saveEntry = (entry) => {
+
+    const jsonNote = JSON.stringify(entry)
+
+    return fetch("http://localhost:3000/entries", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: jsonNote
+    })
+    .then(getEntries)
+    .then(dispatchStateChangeEvent)
 }
