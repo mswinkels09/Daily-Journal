@@ -7,3 +7,4 @@ export const JournalEntryComponent = (entry) =>{
             <div class="entry__concept">${entry.mood}</div>
         </section>`
 }
+
